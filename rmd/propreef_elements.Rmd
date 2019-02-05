@@ -1,0 +1,81 @@
+---
+output:
+  html_document:
+    fig_width: 10
+    fig_height: 8
+---
+  
+```{r r_packages, include=FALSE}
+library("leaflet")
+library("htmlwidgets")
+library("maptools")
+library("sf")
+library("sp")
+library("rgdal")
+library("leaflet.extras")
+library("maptools")
+library("leaflet")
+library("rgdal")
+library("dplyr")
+library("tidyr")
+```
+
+```{r r_uploads,include= FALSE}
+
+oysterbeds1982<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_1982")
+
+oysterbeds1995<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_1995")
+
+oysterbeds2001<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_2001")
+
+oysterbeds2010<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_2010")
+
+PRO <- sp::CRS('+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0')
+
+oysterbeds1982p <- sp::spTransform(oysterbeds1982,PRO)
+oysterbeds1995p <- sp::spTransform(oysterbeds1995,PRO)
+oysterbeds2001p <- sp::spTransform(oysterbeds2001,PRO)
+oysterbeds2010p <- sp::spTransform(oysterbeds2010,PRO)
+
+
+PRO <- sp::CRS('+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0')
+#df2 <- SpatialPoints(df, CRS('+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0'))
+
+propreef <- readOGR(dsn=path.expand("C:/Users/melimore86/Desktop/leaflet_map/lc_project.gdb"), layer = "lc_reef_elements")
+propreef2<- sp::spTransform(propreef,PRO)
+
+markers <- readOGR(dsn=path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer = "markers_df")
+markers2<- sp::spTransform(markers,PRO)
+
+signs<- makeIcon(
+  iconUrl = "C:/Users/melimore86/Desktop/leaflet_map/icon/signs3.png",
+  iconWidth = 30, iconHeight = 30)
+
+
+class(markers2)
+```
+
+```{r r_map, include=FALSE}
+
+prop<-leaflet() %>% setView(-83.10, 29.25, zoom=14) %>% addProviderTiles("Esri.WorldImagery", group = "Esri WorldImagery")  %>%
+addProviderTiles("OpenStreetMap.HOT", group = "OpenStreetMap.HOT")%>% 
+  addProviderTiles("Esri.NatGeoWorldMap", group = "Esri.NatGeoWorldMap") %>%
+  addPolygons(data = propreef2,stroke = FALSE, fillOpacity = 1, smoothFactor = 0.5, group= "Proposed Reef", color="white", weight=10, label = paste("Element ID - ", propreef2$element_id), labelOptions = labelOptions(noHide = F, direction= "right"))%>%
+  addPolygons(data = oysterbeds1982p,stroke = FALSE, fillOpacity = .8, smoothFactor = 0.5, group= "1982 oyster distribution", color= "#33FF00")%>%
+  addPolygons(data = oysterbeds1995p,stroke = FALSE, fillOpacity = 0.8, smoothFactor = 0.5, group= "1995 oyster distribution", color= "#3399FF")%>%
+  addPolygons(data = oysterbeds2001p,stroke = FALSE, fillOpacity = 0.6, smoothFactor = 0.5, group= "2001 oyster distribution", color= "#9900FF")%>%
+   addPolygons(data = oysterbeds2010p,stroke = FALSE, fillOpacity = 0.6, smoothFactor = 0.5, group= "2010 oyster distribution", color= "#FF33CC")%>%
+  addMarkers(data = markers2, group= "Markers", label = "Channel Markers", labelOptions = labelOptions(noHide = F, direction= "right"),icon=signs)%>%
+  #addMarkers(df2, lng= df2$X, lat= df2$Y, group="Markers",icon=signs, label ="Channel Marker")%>%
+  addLayersControl(baseGroups = c("Esri WorldImagery","OpenStreetMap.HOT","Esri.NatGeoWorldMap"), overlayGroups = c("Proposed Reef", "Markers", "1982 oyster distribution","1995 oyster distribution","2001 oyster distribution","2010 oyster distribution"), options = layersControlOptions(collapsed = TRUE))%>% 
+  hideGroup(c("2010 oyster distribution","2001 oyster distribution","1995 oyster distribution","1982 oyster distribution"))
+
+```
+
+```{r intermap, echo=FALSE}
+prop
+saveWidget(prop, file="prop.html")
+```
+
+
+
