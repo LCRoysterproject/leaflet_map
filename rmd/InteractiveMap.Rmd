@@ -6,29 +6,33 @@ output:
 ---
 
 ```{r r_packages, include=FALSE}
-library(leaflet)
-library(htmlwidgets)
+library("leaflet")
+library("htmlwidgets")
 ```
 
-```{r r_intro,include= FALSE}
-#You can read more about the project here : [ UF Oyster Restoration Project](http://www.wec.ufl.edu/oysterproject/restoration.php)  
+We have compiled several different base layers of oyster reef distribution to include as layers on this map.  These layers are simply representative layers of oyster reef distribution and do not represent full surveys of available oysters in the area.    
 
-#These data are provisional raw downloads from instruments and subject to revision following #QA/QC procedures.    
-#Temperature and salinity (estimated from conductivity measures) are recorded hourly using CT #sensors at stations 2 and 4-9, and CTD sensors at stations 1 and 3.    
-#Oyster beds displayed are part of a Lone Cabbage sampling effort, and not representative of #all oyster beds in Cedar Key, FL.    
-#This map is constantly being updated and changed. Gaps in data are caused by either sensor #malfunctions, missing sensors, or user error.   
-```
+These data are provisional raw downloads from instruments and subject to revision following #QA/QC procedures.      
+    
+Oyster beds displayed are part of a Lone Cabbage sampling effort, and not representative of #all oyster beds in Cedar Key, FL.      
+
+This map is constantly being updated and changed. Gaps in data are caused by either sensor malfunctions, missing sensors, or user error.   
+
+Please click on the map icon on the top right of the map to select data layers of interest. The proposed Lone Cabbage Reef restoration layer is also available for viewing.  Each sensor icon on the map represents a different water quality monitoring station.   
+
+**Click on each sensor to view its hourly or discrete water quality data.** 
+
 
 ```{r r_uploads,include= FALSE}
-library(rgdal)
+library("rgdal")
 
-oysterbeds1982<- readOGR(dsn= path.expand("T:/Oyster Project/mels_git/mapping/shapefile"), layer="LC_1982")
+oysterbeds1982<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_1982")
 
-oysterbeds1995<- readOGR(dsn= path.expand("T:/Oyster Project/mels_git/mapping/shapefile"), layer="LC_1995")
+oysterbeds1995<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_1995")
 
-oysterbeds2001<- readOGR(dsn= path.expand("T:/Oyster Project/mels_git/mapping/shapefile"), layer="LC_2001")
+oysterbeds2001<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_2001")
 
-oysterbeds2010<- readOGR(dsn= path.expand("T:/Oyster Project/mels_git/mapping/shapefile"), layer="LC_2010")
+oysterbeds2010<- readOGR(dsn= path.expand("C:/Users/melimore86/Desktop/leaflet_map/shapefile"), layer="LC_2010")
 
 PRO <- sp::CRS('+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0')
 
@@ -41,11 +45,11 @@ oysterbeds2010p <- sp::spTransform(oysterbeds2010,PRO)
 ```{r oyster_icon, include=FALSE}
 
 divericon <- makeIcon(
-  iconUrl = "T:/Oyster Project/mels_git/mapping/icon/diver3.png",
+  iconUrl = "C:/Users/melimore86/Desktop/leaflet_map/icon/diver3.png",
   iconWidth = 12, iconHeight = 65)
 
 staricon <- makeIcon(
-  iconUrl = "T:/Oyster Project/mels_git/mapping/icon/star.png",
+  iconUrl = "C:/Users/melimore86/Desktop/leaflet_map/icon/star.png",
   iconWidth = 12, iconHeight = 50)
 
 ```
@@ -119,12 +123,14 @@ addMarkers(
   addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png", 
            attribution = "Weather data © OpenWeatherMap", group = "wind", 
            options = tileOptions(opacity = 0.6)) %>% 
-  addLayersControl(baseGroups = c("OpenStreetMap.HOT","Esri.NatGeoWorldMap"), overlayGroups = c("1982 oyster distribution","1995 oyster distribution","2001 oyster distribution","2010 oyster distribution"), options = layersControlOptions(collapsed = TRUE)) %>% 
+  addLayersControl(baseGroups = c("OpenStreetMap.HOT","Esri.NatGeoWorldMap"), 
+                   overlayGroups = c("1982 oyster distribution","1995 oyster distribution","2001 oyster distribution","2010 oyster distribution"), 
+                   options = layersControlOptions(collapsed = TRUE)) %>% 
   hideGroup(c("2010 oyster distribution","2001 oyster distribution","1995 oyster distribution","1982 oyster distribution"))
 
 ```
 
-```{r intermap, echo=FALSE}
+```{r intermap, echo=FALSE, fig.width=8, fig.height=7}
 intermap
 saveWidget(intermap, file="intermap.html")
 ```

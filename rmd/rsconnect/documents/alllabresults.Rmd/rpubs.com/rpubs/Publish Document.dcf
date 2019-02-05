@@ -4,7 +4,7 @@ username:
 account: rpubs
 server: rpubs.com
 hostUrl: rpubs.com
-appId: https://api.rpubs.com/api/v1/document/404345/9795b732e24c49c69f194190ae2e9d40
-bundleId: https://api.rpubs.com/api/v1/document/404345/9795b732e24c49c69f194190ae2e9d40
-url: http://rpubs.com/oysterproject/404345
-when: 1532107907.63021
+appId: https://api.rpubs.com/api/v1/document/464436/100d79d68e8c474dab07fcf5134cac76
+bundleId: https://api.rpubs.com/api/v1/document/464436/100d79d68e8c474dab07fcf5134cac76
+url: http://rpubs.com/publish/claim/464436/ccc08fef2bf345488de6000b13c04a85
+when: 1549398623.39494
