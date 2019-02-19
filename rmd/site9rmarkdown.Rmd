@@ -106,12 +106,12 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-02-01 23:00:00")
+endDate <- ymd_hms("2019-02-15 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
 wq <- read.csv("data/wq.csv", header= T) %>%
-  filter(Site == 6) %>%
+  filter(Site == 9) %>%
   select(Date, Temperature, Salinity)
 wq$Date <- wq$Date %>% ymd_hms %>% round_date(unit="hour")
 
