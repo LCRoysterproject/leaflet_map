@@ -106,7 +106,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-03-22 23:00:00")
+endDate <- ymd_hms("2019-04-08 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
@@ -141,7 +141,8 @@ yr <- year(d) %>% unique
 
 wind17 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2017)
 wind18 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2018)
-wind <- rbind(wind17$data, wind18$data) %>% dplyr::distinct()
+wind19 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2019)
+wind <- rbind(wind17$data, wind18$data, wind19$data) %>% dplyr::distinct()
 write_rds(wind, "data/wind.rds")
 
 wind <- read_rds("data/wind.rds")
