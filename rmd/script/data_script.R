@@ -56,6 +56,17 @@ wq<-wq %>%
 wq<-wq %>% 
   filter(!(Salinity > 40))
 
+#removing site 10 for now
+wq<-wq %>% 
+  filter(!(Site == 10 & Date < "2019-03-08 15:03:00"))
+
+wq<-wq %>% 
+  filter(!(Site == 11))
+
+wq<-wq %>% 
+  filter(!(Site == 21))
+
+
 
 #Writting as a .csv for the Shiny App
 write.csv(wq,file = "data/wq.csv")
