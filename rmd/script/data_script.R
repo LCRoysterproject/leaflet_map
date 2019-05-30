@@ -69,11 +69,11 @@ wq<-wq %>%
 wq<-wq %>% 
   filter(!(Site == 21))
 
-
+wq<-wq %>% 
+  filter(!(Site == 0))
 
 #Writting as a .csv for the Shiny App
 write.csv(wq,file = "data/wq.csv")
-
 
 ###Lakewatch Data, from the MySQL workbench
 
