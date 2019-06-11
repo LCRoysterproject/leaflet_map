@@ -36,10 +36,10 @@ There are discrete measurements for this site.  All discrete measurements were p
 
 This figure is available for zoomability.  
 
-Discharge units- 1,000 cfs  
-Salinity units- ppt  
-Temperature units- C  
-Wind speed units - m/s   
+Discharge units (daily mean) - 1,000 cfs    
+Salinity units (daily mean) - ppt    
+Temperature (daily mean)- Celsius  
+Wind speed units - m/s    
 
 
 ```{r labresults, include=FALSE, eval=TRUE}
@@ -106,7 +106,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-05-25 23:00:00")
+endDate <- ymd_hms("2019-06-10 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
