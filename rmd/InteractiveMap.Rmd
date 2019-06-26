@@ -77,7 +77,7 @@ intermap<-leaflet() %>%
  
   
   #View of the map in X and Y 
-  setView(-83.10, 29.25, 14) %>%
+  setView(-83.09, 29.25, 14) %>%
 addMarkers(
     lng = -83.115749973803759, lat = 29.266459979116917,
     label = "Site 1",
@@ -132,6 +132,12 @@ addMarkers(
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=staricon,
     popup='<a href="http://rpubs.com/oysterproject/site9measurements/">Observations</a>') %>%
+  addMarkers(
+    lng = -83.067617, lat = 29.233769,
+    label = "Site 10",
+    labelOptions = labelOptions(noHide = T, direction= "right"),
+    icon=staricon,
+    popup='<a href="http://rpubs.com/oysterproject/site10measurements/">Observations</a>') %>%
   #addProviderTiles("OpenWeatherMap.Clouds", group = "clouds2", options = tileOptions(opacity = 0.6)) %>%
   #addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png", attribution = "Weather data © OpenWeatherMap", group = "temp", options = tileOptions(opacity = 0.6)) %>% 
   #addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png", attribution = "Weather data © OpenWeatherMap", group = "precipitation", 
