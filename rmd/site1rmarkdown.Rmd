@@ -282,7 +282,7 @@ phos <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) +
+      as.POSIXct("2019-07-01"))) +
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -308,7 +308,7 @@ nitro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -336,7 +336,7 @@ chloro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -365,7 +365,7 @@ secchi <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -391,7 +391,7 @@ color <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01")))+ 
+      as.POSIXct("2019-07-01")))+ 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -420,7 +420,7 @@ cond <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),

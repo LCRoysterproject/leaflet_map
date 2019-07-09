@@ -105,7 +105,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-06-22 23:00:00")
+endDate <- ymd_hms("2019-07-03 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
@@ -279,7 +279,7 @@ phos <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) +
+      as.POSIXct("2019-07-01"))) +
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -305,7 +305,7 @@ nitro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -333,7 +333,7 @@ chloro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -362,7 +362,7 @@ secchi <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -388,7 +388,7 @@ color <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01")))+ 
+      as.POSIXct("2019-07-01")))+ 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -417,7 +417,7 @@ cond <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-03-01"))) + 
+      as.POSIXct("2019-07-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
