@@ -7,4 +7,8 @@ hostUrl: rpubs.com
 appId: https://api.rpubs.com/api/v1/document/406054/540b254ac00b43b7a7aea5636507663f
 bundleId: https://api.rpubs.com/api/v1/document/406054/540b254ac00b43b7a7aea5636507663f
 url: http://rpubs.com/oysterproject/406054
+<<<<<<< HEAD
+when: 1565628713.56841
+=======
 when: 1562630763.41764
+>>>>>>> 5b2bf3bc1e3bc17efc53b301d237433a9f1862d0
