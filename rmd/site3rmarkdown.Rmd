@@ -107,11 +107,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-<<<<<<< HEAD
-endDate <- ymd_hms("2019-08-06 23:00:00")
-=======
-endDate <- ymd_hms("2019-07-03 23:00:00")
->>>>>>> 5b2bf3bc1e3bc17efc53b301d237433a9f1862d0
+endDate <- ymd_hms("2019-08-19 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
