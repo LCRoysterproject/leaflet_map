@@ -64,13 +64,17 @@ wq<-wq %>%
   filter(!(Site == 11 & Date > "2019-07-29 23:00:00" & Date < "2019-08-02 17:00:00"))
 
 wq<-wq %>% 
-  filter(!(Site == 21))
-
-wq<-wq %>% 
   filter(!(Site == 0))
 
 wq<-wq %>% 
+  filter(!(Site == 21))
+
+wq<-wq %>% 
   filter(!(Site == 22))
+
+
+wq<-wq %>% 
+  filter(!(Site == 23))
 
 #Writting as a .csv for the Shiny App
 write.csv(wq,file = "rmd/data/wq.csv")
