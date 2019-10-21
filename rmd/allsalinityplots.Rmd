@@ -29,7 +29,7 @@ Salinity is calculated by conductivity and temperature measurements.
 wq <- read.csv("data/wq.csv", header= T)
 wq$Date<- as.POSIXct(wq$Date, tz="EST",usetz=TRUE)
 wq<-wq %>% 
-  filter(!(Site == 0))
+  filter(!(Site == 0 | Site == 10 | Site ==11 ))
 
 ```
 
@@ -72,27 +72,29 @@ wq$facet = factor(wq$Site, levels = c("6", "1", "7", "5", "2", "8","4", "3", "9"
 wqplot<-ggplot(data=wq, aes(x=Date))+
     labs(x= "Date", y= "Temp(C) & Salinity (ppt)", fill ="")+
   geom_ribbon(data= dis, aes(y=Values/1000, ymin=0, ymax=Values/1000, fill= "River Discharge"), color= "cornflowerblue", alpha=0.5) +
-    geom_point(aes(y= Temperature, fill= "Temperature"),color= "red")+
-    geom_point(aes(y= Salinity, fill= "Salinity"),color= "black")+
+    geom_point(aes(y= Temperature, fill= "Temperature"),color= "red", size=.65)+
+    geom_point(aes(y= Salinity, fill= "Salinity"),color= "black", size=.75)+
   scale_y_continuous(sec.axis = sec_axis(~.*1000, name = "River Discharge (cfs)"), limits=c(0,40)) + 
   scale_x_datetime(
-    breaks = date_breaks("4 weeks") ,
+    breaks = date_breaks("12 weeks") ,
     labels = date_format("%Y/%m"),
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2017-08-10"),
-      as.POSIXct("2018-07-30"))) +
+      as.POSIXct("2019-10-01"))) +
   scale_fill_manual(values = c("cornflowerblue", "black", "red"),guide = guide_legend(show = TRUE)) +
   theme(legend.position=("top"),
     panel.border = element_rect(color = "black", size = 1, fill = NA, linetype="solid"),
-        axis.text=element_text(size=20),
+        axis.text=element_text(size=15),
         axis.title=element_text(size=20,face="bold"),
         plot.title =element_text(size=30, face='bold'),
-        axis.text.x = element_text(angle = 90, hjust = 1)) +
-    facet_wrap(~facet)
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text.x = element_text(size = 15),
+        legend.text=element_text(size=15)) +
+    facet_wrap(~facet, ncol= 3)
 ```
 
-```{r wqplot, warning= FALSE, fig.width=12,fig.height=9, echo=FALSE}
+```{r wqplot, warning= FALSE, fig.width=20,fig.height=12, echo=FALSE}
 wqplot
 ```
 
