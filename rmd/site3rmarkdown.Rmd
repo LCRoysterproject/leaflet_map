@@ -107,7 +107,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-10-01 23:00:00")
+endDate <- ymd_hms("2019-10-14 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
@@ -265,9 +265,9 @@ dis$Date <- as.POSIXct(as.Date(dis$oldDate,origin= "1899-12-30"))
 phos <-
   ggplot(data= lab, aes(x= Date)) +
   
-  ggtitle("PHOSPHORUS (µg/L)") +
+  ggtitle("PHOSPHORUS (microgram/liter)") +
   
-  labs(x= "Date", y= "Phosphorus (µg/L)") +
+  labs(x= "Date", y= "Phosphorus (microgram/liter)") +
   
   geom_line(data= dis, aes(y=Discharge/320), color= "cornflowerblue", size=1, alpha=0.6) +
   
@@ -281,7 +281,7 @@ phos <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-07-01"))) +
+      as.POSIXct("2019-09-20"))) +
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -292,9 +292,9 @@ phos <-
 nitro <-  
   ggplot(data= lab, aes(x= Date)) +
   
-  ggtitle("NITROGEN (µg/L)") +
+  ggtitle("NITROGEN (microgram/liter)") +
   
-  labs(x= "Date", y= "Nitrogen (µg/L)") +
+  labs(x= "Date", y= "Nitrogen (microgram/liter)") +
   
   geom_line(data= dis, aes(y=Discharge/25), color= "cornflowerblue", size=1, alpha=0.6) +
   
@@ -307,7 +307,7 @@ nitro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-07-01"))) + 
+      as.POSIXct("2019-09-20"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -319,9 +319,9 @@ nitro <-
 chloro <-
   ggplot(data= lab, aes(x= Date)) +
   
-  ggtitle("CHLOROPHYLL (µg/L)") +
+  ggtitle("CHLOROPHYLL (microgram/liter)") +
   
-  labs(x= "Date", y= "Chlorophyll (µg/L)") +
+  labs(x= "Date", y= "Chlorophyll (microgram/liter)") +
   
   geom_line(data= dis, aes(y=Discharge/500), color= "cornflowerblue", size=1, alpha=0.6) +
   
@@ -335,7 +335,7 @@ chloro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-07-01"))) + 
+      as.POSIXct("2019-09-20"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -364,7 +364,7 @@ secchi <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-07-01"))) + 
+      as.POSIXct("2019-09-20"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -390,7 +390,7 @@ color <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-07-01")))+ 
+      as.POSIXct("2019-09-20")))+ 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -419,7 +419,7 @@ cond <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-07-01"))) + 
+      as.POSIXct("2019-09-20"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
         axis.title=element_text(size=9,face="bold"),
@@ -433,6 +433,6 @@ cond <-
 combine.plot
 ```
 
-```{r lab _results, echo=FALSE, fig.width=8,fig.height=6, warning= FALSE,  message=FALSE}
+```{r lab _results, echo=FALSE, fig.width=10,fig.height=6, warning= FALSE,  message=FALSE}
 plot_grid(phos, nitro,color,cond,secchi, chloro, ncol=2)
 ```

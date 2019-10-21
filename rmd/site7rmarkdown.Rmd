@@ -104,7 +104,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-10-01 23:00:00")
+endDate <- ymd_hms("2019-10-14 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
@@ -225,6 +225,6 @@ combine.plot <- stwd_summ %>%
   subplot(nrows = 4, shareX = T)
 ```
 
-```{r plotly_plot, echo=FALSE, fig.width=8,fig.height=6, warning= FALSE,  message=FALSE}
+```{r plotly_plot, echo=FALSE, fig.width=10,fig.height=6, warning= FALSE,  message=FALSE}
 combine.plot
 ```
