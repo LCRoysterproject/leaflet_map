@@ -39,7 +39,7 @@ wq$observation_datetime<- as.Date(wq$observation_datetime, tz="EST",usetz=TRUE)
 
 colnames(wq) <- c("ID", "Obs_Date", "In_Service", "Pressure", "Temperature", "Conductivity", "Salinity_OG", "Sound_velo",  "Site","Sensor_ID", "Salinity","Date")
 
-write.csv(wq,file = "rmd/data/wq_total.csv")
+write.csv(wq,file = "wq_app/data/wq_total.csv")
 
 ## Removing any values over 40 ppt
 wq<-wq %>% 
@@ -73,6 +73,10 @@ wq<-wq %>%
 wq<-wq %>% 
   filter(!(Site == 4 & Date > "2019-08-28 23:00:00" & Date < "2019-09-10 23:00:00"))
 
+#Removing observations from site 4, Flatiline in mid October
+wq<-wq %>% 
+  filter(!(Site == 4 & Date > "2019-10-14 23:00:00" & Date < "2019-11-04 23:00:00"))
+
 #Removing observations from site 2, Flatiline in early October 
 wq<-wq %>% 
   filter(!(Site == 2 & Date > "2019-10-01 23:00:00" & Date < "2019-10-15 23:00:00"))
@@ -81,13 +85,17 @@ wq<-wq %>%
 wq<-wq %>% 
   filter(!(Site == 0))
 
+wq<-wq %>% 
+  filter(!(Site == 11))
+
 #Annalees sensors
 wq<-wq %>% 
   filter(!(Site == 21))
 wq<-wq %>% 
   filter(!(Site ==22))
 wq<-wq %>% 
-  filter(!(Site ==22))
+  filter(!(Site ==23))
+
 
 
 #Writting as a .csv for the Shiny App
