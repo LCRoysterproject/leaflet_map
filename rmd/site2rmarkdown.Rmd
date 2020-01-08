@@ -22,9 +22,9 @@ library("tidyverse")
 library("waterData")
 ```
 
-#Site 2  
-####Longitude:  -83.09591  
-####Latitude:    29.24560 
+Site 2  
+Longitude:  -83.09591  
+Latitude:    29.24560 
 
 The main plot consists of continuous data gathered from a Star-Oddi sensor, which measures salinity, temperature, and conductivity hourly, as of August 2017. Missing data are due to lost or stolen sensors.  
 
@@ -106,7 +106,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-12-04 23:00:00")
+endDate <- ymd_hms("2020-01-02 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry

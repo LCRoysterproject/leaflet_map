@@ -23,9 +23,9 @@ library("waterData")
 
 ```
 
-#Site 1  
-####Longitude:  -83.11575  
-####Latitude:    29.26646  
+Site 1  
+Longitude:  -83.11575  
+Latitude:    29.26646  
 
 
 The main plot consists of continuous data gathered from a Diver sensor, which measures temperature, and conductivity hourly, as of August 2017. Missing data are due to lost or stolen sensors.      
@@ -108,7 +108,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2019-12-04 23:00:00")
+endDate <- ymd_hms("2020-01-02 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
