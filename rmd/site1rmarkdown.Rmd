@@ -1,6 +1,5 @@
 ---
 output: html_document
-
 ---
 
 ```{r setup, include=FALSE}
@@ -108,7 +107,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2020-01-15 23:00:00")
+endDate <- ymd_hms("2020-02-03 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
@@ -145,12 +144,14 @@ wind17 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2017)
 wind18 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2018)
 wind19 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2019)
 wind <- rbind(wind17$data, wind18$data, wind19$data) %>% dplyr::distinct()
+
 write_rds(wind, "data/wind.rds")
 
 wind <- read_rds("data/wind.rds")
 
 # Shrink the wind table, and convert the format of time
 wind$time <- ymd_hms(wind$time)
+
 wind <- wind %>%
   filter(time >= startDate & time <= endDate) %>%
   select(time, WindSpeed = wind_spd)
