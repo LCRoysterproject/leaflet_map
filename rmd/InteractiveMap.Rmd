@@ -11,15 +11,19 @@ library("htmlwidgets")
 library("rgdal")
 ```
 
+##**INTERACTIVE WATER QUALITY SENSOR MAP**
+**[Lone Cabbage Reef GitHub](https://github.com/LCRoysterproject)** ![](icon/github.jpeg)  
+  
+
 We have compiled several different base layers of oyster reef distribution to include as layers on this map.  These layers are simply representative layers of oyster reef distribution and do not represent full surveys of available oysters in the area.    
 
-These data are provisional raw downloads from instruments and subject to revision following #QA/QC procedures.      
+These data are provisional raw downloads from instruments and subject to revision following QA/QC procedures.      
     
-Oyster beds displayed are part of a Lone Cabbage sampling effort, and not representative of #all oyster beds in Cedar Key, FL.      
+In the right-top hand toggle, oyster bed shapefiles are displayed as part of a Lone Cabbage sampling effort, and not representative of all oyster beds in Cedar Key, FL.      
 
-This map is constantly being updated and changed. Gaps in data are caused by either sensor malfunctions, missing sensors, or user error.   
+This map is consistently updated and changed. Gaps in data are caused by either sensor malfunctions, missing sensors, or user error.   
 
-Please click on the map icon on the top right of the map to select data layers of interest. The proposed Lone Cabbage Reef restoration layer is also available for viewing.  Each sensor icon on the map represents a different water quality monitoring station.   
+Please click on the map icon on the top right of the map to select data layers of interest. The proposed Lone Cabbage Reef restoration layer is also available for viewing.  Each sensor icon on the map represents a different water quality monitoring station. Sites 1 and 3 use a Diver data logger and the rest of the sites use a Star- Oddi data logger.  
 
 **CLICK ON EACH SENSOR TO VIEW OBSERVATIONS** 
 
@@ -66,7 +70,7 @@ reef_elements<- readOGR(dsn= path.expand("./shapefile"), layer="LC_reef_elements
 
 ```{r r_map, include=FALSE}
 intermap<-leaflet() %>%  
-  addProviderTiles("Esri.NatGeoWorldMap", group = "Esri.NatGeoWorldMap") %>%
+  addProviderTiles("OpenStreetMap.HOT", group = "OpenStreetMap.HOT") %>%
   
    addPolygons(data = reef_elements,stroke = FALSE, fillOpacity = 0.6, smoothFactor = 0.5, group= "Lone Cabbage Reef Elements", color= "black",options = pathOptions(clickable = FALSE))%>%
   
@@ -83,68 +87,71 @@ addMarkers(
     label = "Site 1",
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=divericon,
-    popup='<a href="http://rpubs.com/oysterproject/site1measurements/">Observations</a>') %>%
+    popup=' <b> Site 1 </b><br>
+    <a href="https://rpubs.com/oysterproject/site1measurements/">Observations</a>') %>%
   addMarkers(
     lng = -83.095912020653486, lat = 29.24560303799808,
     label = "Site 2",
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site2measurements/">Observations</a>') %>%
+    popup=' <b> Site 2 </b><br>
+    <a href="https://rpubs.com/oysterproject/site2measurements/">Observations</a>') %>%
   addMarkers(
     lng = -83.090120041742921, lat = 29.231049958616495,
     label = "Site 3",
     labelOptions = labelOptions(noHide = T, direction= "right"),
    icon=divericon,
-    popup='<a href="http://rpubs.com/oysterproject/site3measurements/">Observations</a>') %>%
+    popup=' <b> Site 3 </b><br>
+   <a href="https://rpubs.com/oysterproject/site3measurements/">Observations</a>') %>%
   addMarkers(
     lng = -83.092115018516779, lat = 29.230171032249928,
     label = "Site 4",
     labelOptions = labelOptions(noHide = T, direction= "left"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site4measurements/">Observations</a>') %>%
+    popup=' <b> Site 4 </b><br>
+    <a href="https://rpubs.com/oysterproject/site4measurements/">Observations</a>') %>%
   addMarkers(
     lng = -83.101499984040856, lat = 29.246092038229108,
     label = "Site 5",
     labelOptions = labelOptions(noHide = T, direction= "left"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site5measurements/">Observations</a>') %>%
+    popup=' <b> Site 5 </b><br>
+    <a href="https://rpubs.com/oysterproject/site5measurements/">Observations</a>') %>%
   addMarkers(
     lng = -83.118119034916162, lat = 29.265770986676216,
     label = "Site 6",
     labelOptions = labelOptions(noHide = T, direction= "left"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site6measurements/">Observations</a>')%>%
+    popup=' <b> Site 6 </b><br>
+    <a href="https://rpubs.com/oysterproject/site6measurements/">Observations</a>')%>%
   addMarkers(
     lng = -83.098221989348531, lat = 29.267726987600327,
     label = "Site 7 ",
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site7measurements/">Observations</a>') %>%
+    popup=' <b> Site 7 </b><br>
+    <a href="https://rpubs.com/oysterproject/site7measurements/"> Observations</a>') %>%
   addMarkers(
     lng = -83.080270970240235, lat = 29.257425041869283,
     label = "Site 8",
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site8measurements/">Observations</a>') %>%
+    popup=" <b> Site 8 </b><br>
+    <a href='https://rpubs.com/oysterproject/site8measurements/'>Observations</a>") %>%
   addMarkers(
     lng = -83.082710020244122, lat = 29.232152011245489,
     label = "Site 9",
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site9measurements/">Observations</a>') %>%
+    popup="<b> Site 9 </b><br>
+    <a href='https://rpubs.com/oysterproject/site9measurements/'>Observations</a>") %>%
   addMarkers(
     lng = -83.067617, lat = 29.233769,
     label = "Site 10",
     labelOptions = labelOptions(noHide = T, direction= "right"),
     icon=staricon,
-    popup='<a href="http://rpubs.com/oysterproject/site10measurements/">Observations</a>') %>%
-  #addProviderTiles("OpenWeatherMap.Clouds", group = "clouds2", options = tileOptions(opacity = 0.6)) %>%
-  #addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png", attribution = "Weather data © OpenWeatherMap", group = "temp", options = tileOptions(opacity = 0.6)) %>% 
-  #addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png", attribution = "Weather data © OpenWeatherMap", group = "precipitation", 
-     #      options = tileOptions(opacity = 0.6)) %>% addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png", attribution = "Weather data © OpenWeatherMap", group = "snow", options = tileOptions(opacity = 0.6)) %>% 
-  #addTiles(urlTemplate = "http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png", 
-   #        attribution = "Weather data © OpenWeatherMap", group = "wind", 
-    #       options = tileOptions(opacity = 0.6)) %>% 
+    popup=' <b> Site 10 </b><br>
+    <a href="https://rpubs.com/oysterproject/site10measurements/">Observations</a>') %>%
   addLayersControl(baseGroups = ("Esri.NatGeoWorldMap"), 
                    overlayGroups = c("Lone Cabbage Reef Elements", "1982 oyster distribution", "1995 oyster distribution", "2001 oyster distribution", "2010 oyster distribution"), 
                    options = layersControlOptions(collapsed = TRUE)) %>% 
