@@ -82,7 +82,7 @@ wq<-wq %>%
   filter(!(Site == 2 & Date > "2019-10-01 23:00:00" & Date < "2019-10-15 23:00:00"))
 
 
-#Removing observations from site $, Flatilined and muddy starting november 12- november 18
+#Removing observations from site 4, Flatlined and muddy starting november 12- november 18
 wq<-wq %>% 
   filter(!(Site == 4 & Date > "2019-11-11 23:00:00" & Date < "2019-11-18 23:00:00"))
 
@@ -124,8 +124,8 @@ colnames(lab) <- c("ID", "Date", "Phosphorus", "Nitrogen", "Chlorophyll", "Secch
 lab$Secchi<- (lab$Secchi/ 3.28)
 
 # We need to update the sensor_type to the correct names for facetting, 4= YSI and 5= Lakewatch 
-lab$Sensor_Type[lab$Sensor_Type == "4"] <- "LAKEWATCH"
-lab$Sensor_Type[lab$Sensor_Type == "5"] <- "YSI"
+lab$Sensor_Type[lab$Sensor_Type == "34"] <- "LAKEWATCH"
+lab$Sensor_Type[lab$Sensor_Type == "35"] <- "YSI"
 
 lab<-lab %>% 
   filter(!(Site == 0))

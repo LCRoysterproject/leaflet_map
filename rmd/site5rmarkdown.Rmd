@@ -20,9 +20,10 @@ library("tidyverse")
 library("waterData")
 ```
 
-Site 5  
-Longitude:  -83.10149  
-Latitude:    29.24609  
+##**Water Quality Site 5**  
+  
+**Longitude:  -83.10149**  
+**Latitude:    29.24609** 
 
 The main plot consists of continuous data gathered from a Star-Oddi sensor, which measures salinity, temperature, and conductivity hourly, as of August 2017. Missing data are due to lost or stolen sensors.  
 
@@ -32,12 +33,13 @@ Wind speed data are provided by package `rnoaa`.
 
 There are discrete measurements for this site.  All discrete measurements were processed by Lakewatch UF.  
 
-This figure is available for zoomability.  
-
+####Unit Definitions
 Discharge units (daily mean) - 1,000 cfs    
 Salinity units (daily mean) - ppt    
 Temperature (daily mean)- Celsius  
 Wind speed units - m/s  
+  
+Scroll over figures for additional information.
 
 
 
@@ -105,7 +107,7 @@ source("script/dailyFunctions.R")
 
 # Define start and end date of the plot
 startDate <- ymd_hms("2017-08-16 00:00:00")
-endDate <- ymd_hms("2020-02-17 23:00:00")
+endDate <- ymd_hms("2020-04-30 23:00:00")
 
 #### Data carpentry ####
 ## Sensor water quality carpentry
@@ -267,11 +269,11 @@ phos <-
   
   labs(x= "Date", y= "Phosphorus (microgram/liter)") +
   
-  geom_line(data= dis, aes(y=Discharge/320), color= "cornflowerblue", size=1, alpha=0.6) +
+  geom_line(data= dis, aes(y=Discharge/250), color= "cornflowerblue", size=1, alpha=0.6) +
   
   geom_point(aes(y=Phosphorus),color= "black", size=2) +
   
-  scale_y_continuous(sec.axis = sec_axis(~.*320,name = "River Discharge (cfs)"),limits=c(0,125)) +
+  scale_y_continuous(sec.axis = sec_axis(~.*250,name = "River Discharge (cfs)"),limits=c(0,160)) +
   
   scale_x_datetime(
     breaks = date_breaks("3 months") ,
@@ -279,9 +281,12 @@ phos <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-09-20"))) +
+      as.POSIXct("2019-10-01"))) +
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.title=element_text(size=9,face="bold"),
         axis.text.x = element_text(angle = 45, size=9, hjust = 1),
         axis.text.y = element_text(size=9),
@@ -305,14 +310,15 @@ nitro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-09-20"))) + 
-  
+      as.POSIXct("2019-10-01"))) + 
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.title=element_text(size=9,face="bold"),
         axis.text.x = element_text(angle = 45, size=9, hjust = 1),
         axis.text.y = element_text(size=9),
         plot.title = element_text(size=9))
-  
 
 chloro <-
   ggplot(data= lab, aes(x= Date)) +
@@ -321,11 +327,11 @@ chloro <-
   
   labs(x= "Date", y= "Chlorophyll (microgram/liter)") +
   
-  geom_line(data= dis, aes(y=Discharge/500), color= "cornflowerblue", size=1, alpha=0.6) +
+  geom_line(data= dis, aes(y=Discharge/400), color= "cornflowerblue", size=1, alpha=0.6) +
   
   geom_point(aes(y=Chlorophyll),color= "black", size=2) +
   
-  scale_y_continuous(sec.axis = sec_axis(~.*500,name = "River Discharge (cfs)"),limits=c(0,80)) +
+  scale_y_continuous(sec.axis = sec_axis(~.*400,name = "River Discharge (cfs)"),limits=c(0,100)) +
   
   scale_x_datetime(
     breaks = date_breaks("3 months") ,
@@ -333,9 +339,12 @@ chloro <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-09-20"))) + 
+      as.POSIXct("2019-10-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.title=element_text(size=9,face="bold"),
         axis.text.x = element_text(angle = 45, size=9, hjust = 1),
         axis.text.y = element_text(size=9),
@@ -362,9 +371,12 @@ secchi <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-09-20"))) + 
+      as.POSIXct("2019-10-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.title=element_text(size=9,face="bold"),
         axis.text.x = element_text(angle = 45, size=9, hjust = 1),
         axis.text.y = element_text(size=9),
@@ -388,9 +400,12 @@ color <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-09-20")))+ 
+      as.POSIXct("2019-10-01")))+ 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.title=element_text(size=9,face="bold"),
         axis.text.x = element_text(angle = 45, size=9, hjust = 1),
         axis.text.y = element_text(size=9),
@@ -417,21 +432,36 @@ cond <-
     expand = c(0, 0),
     limits = c(
       as.POSIXct("2016-12-20"),
-      as.POSIXct("2019-09-20"))) + 
+      as.POSIXct("2019-10-01"))) + 
   
   theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA, linetype="solid"),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.title=element_text(size=9,face="bold"),
         axis.text.x = element_text(angle = 45, size=9, hjust = 1),
         axis.text.y = element_text(size=9),
         plot.title = element_text(size=9))
   
-  
+
 ```
 
-```{r plotly_plot, echo=FALSE, fig.width=8,fig.height=6, warning= FALSE,  message=FALSE}
+```{r plotly_plot, echo=FALSE, fig.width=10,fig.height=10, warning= FALSE,  message=FALSE}
 combine.plot
 ```
 
-```{r lab _results, echo=FALSE, fig.width=10,fig.height=6, warning= FALSE,  message=FALSE}
-plot_grid(phos, nitro,color,cond,secchi, chloro, ncol=2)
+```{r lab _results, echo=FALSE, fig.width=6,fig.height=4, warning= FALSE,  message=FALSE}
+phos1<-ggplotly(phos)
+nitro1<-ggplotly(nitro)
+color1<-ggplotly(color)
+cond1<-ggplotly(cond)
+secchi1<-ggplotly(secchi)
+chloro1<-ggplotly(chloro)
+
+phos1 
+nitro1 
+color1
+cond1
+secchi1 
+chloro1
 ```
