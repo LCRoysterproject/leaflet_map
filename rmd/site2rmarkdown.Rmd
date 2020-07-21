@@ -26,7 +26,7 @@ library("waterData")
 **Longitude:  -83.09591**  
 **Latitude:    29.24560**   
 
-The main plot consists of continuous data gathered from a Star-Oddi sensor, which measures salinity, temperature, and conductivity hourly, as of August 2017. Missing data are due to lost or stolen sensors.  
+The main plot consists of continuous data gathered from a Star-Oddi sensor, which measures salinity, temperature, and conductivity hourly, as of August 2017. Missing data are due to lost, or temporarily removed sensors.    
 
 Water discharge data are provided by package `waterData`. River discharge data are measured at USGS gauge 02323500 (Wilcox) Florida as mean daily discharge in cubic feet per second (by convention).       
 
@@ -144,9 +144,8 @@ yr <- year(d) %>% unique
 wind17 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2017)
 wind18 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2018)
 wind19 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2019)
-wind <- rbind(wind17$data, wind18$data, wind19$data) %>% dplyr::distinct()
-write_rds(wind, "data/wind.rds")
-
+wind20 <- buoy(dataset='cwind',buoyid='CDRF1', datatype='c', year=2020)
+wind <- rbind(wind17$data, wind18$data, wind19$data, wind20$data) %>% dplyr::distinct()
 wind <- read_rds("data/wind.rds")
 
 # Shrink the wind table, and convert the format of time
